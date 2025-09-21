@@ -1,0 +1,9 @@
+.gitattributes
+# =========================================
+# Git configuration for text / notebooks
+# =========================================
+
+# Normalize line endings
+* text=auto
+
+
