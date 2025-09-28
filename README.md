@@ -2,12 +2,23 @@
 # 📱 Kenya Telco App Reviews – Capstone Project
 Authors: Jedidah Kathure, Winnie Amoit, Antony Njoroge  , Rachel Odhiambo, Ann Mumbe and Navros Kamau
 
+
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)  
 [![NLP](https://img.shields.io/badge/NLP-Sentiment%20Analysis-green)]()  
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)  
 
 ### Customer Sentiment & Complaint Analysis from Google Play and App Store Reviews  
-Comparing **Safaricom** and **Airtel** mobile apps using Natural Language Processing (NLP).
+
+Telecommunication giants Safaricom and Airtel serve millions of Kenyans through their mobile apps, which power critical services such as M-Pesa, Airtel Money, airtime purchases, data bundles, and customer self-service. Yet, user experiences vary widely, and customers are quick to voice their expiriences in app-store reviews.
+
+This project analyzes thousands of Safaricom and Airtel reviews using Natural Language Processing (NLP) to:
+
+- Classify sentiment (positive, neutral, negative)
+
+- Detect common complaints (network reliability, login/OTP issues, mobile money performance, etc.)
+
+- Provide data-driven recommendations for product managers and CX teams
+
 
 ---
 
@@ -46,11 +57,49 @@ By applying **NLP techniques**, we can uncover patterns, detect problems, and de
 - **Brand Loyalty & Trust** → Transparent use of customer feedback to improve services.  
 - **Competitive Benchmarking** → Compare Safaricom vs Airtel performance and sentiment trends. 
 
-## 🎯 Objectives
+### 🎯 Objectives
 1. **Sentiment Classification** → Positive, Negative, Neutral  
 2. **Theme & Topic Mining** → Identify major complaint categories  
 3. **Trend Analysis** → Monitor issues over time  
 4. **Benchmarking** → Compare Safaricom vs Airtel customer satisfaction  
+
+---
+
+## 📂 Data Understanding
+### Data Source
+- Reviews were collected from Google Play Store and Apple App Store for Safaricom and Airtel mobile applications.
+- Data includes:
+      - Review text
+      - Star ratings
+      - Date of review
+      - App metadata
+
+### Data Characteristics
+- *Size*: Thousands of reviews across both platforms
+- *Features*: Unstructured text, numeric star ratings
+- *Target*: Sentiment classification (positive, neutral, negative)
+
+### Data Quality
+- Issues identified:
+      - Duplicates and spam reviews
+      - Mixed languages (English, Swahili, Sheng)
+      - Typos and informal text
+
+### Exploratory Insights
+- Safaricom reviews show strong polarity—many highly positive (praising M-Pesa) and many negative (network/bundle complaints).
+- Airtel reviews highlight frequent login/OTP issues and customer service frustrations.
+- Common words: *“network”, “data”, “M-Pesa”, “login”, “OTP”*.
+
+---
+## 📁 Repository Navigation
+├── data/               # (raw and processed data or instructions to download)
+├── notebooks/          # Jupyter notebooks (EDA, modeling, final analysis)
+├── src/                # Scripts for preprocessing, modeling, evaluation
+├── images/             # Visuals for README and presentation
+├── presentation/       # Final presentation slides
+├── README.md           # This file
+└── requirements.txt    # Dependencies
+
 
 ---
 
