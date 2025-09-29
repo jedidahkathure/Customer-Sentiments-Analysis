@@ -1,4 +1,4 @@
-# Core
+# Core Data Processing
 pandas>=2.0.0
 numpy>=1.24.0
 
@@ -6,10 +6,22 @@ numpy>=1.24.0
 matplotlib>=3.7.0
 seaborn>=0.12.0
 
-# NLP / Feature Extraction
+# Machine Learning
 scikit-learn>=1.3.0
-wordcloud>=1.9.2
+xgboost>=1.7.0
 
-# Optional utilities
+# NLP and Text Processing
+nltk>=3.8.0
+wordcloud>=1.9.2
+emoji>=2.8.0
+contractions>=0.1.0
+
+# Web Scraping (if needed)
+google-play-scraper>=1.2.0
+
+# Jupyter and Development
 jupyter>=1.0.0
 ipython>=8.12.0
+
+# Note: Built-in modules like re, string, collections, datetime, time, warnings, pathlib
+# are part of Python standard library and don't need to be installed
