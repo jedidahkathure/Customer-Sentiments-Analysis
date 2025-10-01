@@ -9,3 +9,23 @@ kenya_telco_app_reviews_20250924_214626.csv
 kenya_telco_app_reviews_20250924_221617.csv
 kenya_telco_app_reviews_20250925_113102.csv
 kenya_telco_app_reviews_20250925_163948.csv
+# Ignore specific untracked files (confusion matrices)
+Output/CM_AdaBoost_binary_blues.png
+Output/CM_DecisionTree_binary_blues.png
+Output/CM_ExtraTrees_binary_blues.png
+Output/CM_LogisticRegression_binary_blues.png
+Output/CM_MultinomialNB_binary_blues.png
+Output/CM_RandomForest_binary_blues.png
+Output/CM_SVM_binary_blues.png
+Output/CM_XGBoost_binary_blues.png
+
+# Ignore specific untracked wordclouds
+Output/wordcloud_negative_blues.png
+Output/wordcloud_positive_blues.png
+
+# Ignore temporary dataset snapshot
+Output/kenya_telco_app_reviews_20250930_162444.csv
+
+# Ignore all BERT checkpoints
+bert_results/
+
