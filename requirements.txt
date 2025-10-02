@@ -25,3 +25,9 @@ ipython>=8.12.0
 
 # Note: Built-in modules like re, string, collections, datetime, time, warnings, pathlib
 # are part of Python standard library and don't need to be installed
+
+fastapi
+uvicorn
+scikit-learn
+imblearn
+joblib
