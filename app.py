@@ -7,7 +7,7 @@ model = joblib.load("log_reg_smote.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
 
 # Initialize FastAPI app
-app = FastAPI(title="Telco Sentiment API")
+app = FastAPI(title="Safaricom/Airtel Sentiment API")
 
 # Input schema
 class Review(BaseModel):
@@ -15,7 +15,7 @@ class Review(BaseModel):
 
 @app.get("/")
 def home():
-    return {"message": "Hello!This is Group 5 🚀"}
+    return {"message": "Hello! This is Group Five! 🚀"}
 
 @app.post("/predict")
 def predict_sentiment(review: Review):
