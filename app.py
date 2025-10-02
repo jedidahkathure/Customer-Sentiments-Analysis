@@ -15,7 +15,7 @@ class Review(BaseModel):
 
 @app.get("/")
 def home():
-    return {"message": "Welcome to the Telco Sentiment API 🚀"}
+    return {"message": "Hello!This is Group 5 🚀"}
 
 @app.post("/predict")
 def predict_sentiment(review: Review):
