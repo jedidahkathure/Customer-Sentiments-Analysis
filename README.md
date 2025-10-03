@@ -15,17 +15,6 @@ This project analyzes thousands of Safaricom and Airtel reviews using **Natural 
 - Detect common complaints (network reliability, login/OTP issues, mobile money performance, etc.)  
 - Provide **data-driven recommendations** for product managers and CX teams  
 
----
-
-## 📌 Business Understanding  
-Kenya’s telecom giants Safaricom and Airtel serve millions who rely on their apps for mobile money, airtime, data bundles, and customer self-service.  
-
-App-store reviews provide authentic, unfiltered customer feedback on issues such as:  
-- Network reliability  
-- Data bundles  
-- M-Pesa / Airtel Money  
-- Login & OTP problems  
-- App usability  
 
 By applying NLP techniques, we can uncover patterns, detect problems, and deliver actionable insights to enhance customer experience.  
 
@@ -45,9 +34,29 @@ By applying NLP techniques, we can uncover patterns, detect problems, and delive
 - **Data Science & Engineering Teams** → Build scalable monitoring and analytics pipelines.  
 - **Regulators & Industry Analysts** → Understand telco market competitiveness.  
 
+
 ---
 
-## 💡 Business Value  
+## 🧭 Table of Contents
+
+- [Project Motivation](#project-motivation)
+- [Data Understanding](#-data-understanding)
+- [Feature Engineering & Pipeline](#-feature-engineering--pipeline)
+- [Modeling & Evaluation](#️-modeling--evaluation)
+- [Exploratory Data Analysis (EDA)](#-exploratory-data-analysis-eda)
+- [Model Performance](#-model-performance)
+- [Key Insights](#-key-insights)
+- [Final Model Selection](#-final-model-selection)
+- [Setup Instructions](#️-setup-instructions)
+- [Next steps & Limitations](#next-steps--limitations)
+- [Acknowledgements](#acknowledgements)
+
+---
+## 💡Project Motivation
+
+Telecom operators need to surface and prioritize real customer complaints quickly (e.g., service outages, billing errors, failed transactions). App-store reviews are an inexpensive, continuous signal of customer experience and can be monitored to detect outages and recurring problems. This project aims to turn app reviews into an automated complaint-detection signal that CX teams can act on.
+
+### Business Value  
 This project provides immediate, tangible value by translating noisy, unstructured app reviews into **actionable intelligence**:  
 
 - **Customer Retention** → Reduce churn by addressing common pain points. Detect complaints rapidly and engage dissatisfied customers before they defect.  
@@ -56,36 +65,34 @@ This project provides immediate, tangible value by translating noisy, unstructur
 - **Brand Loyalty & Trust** → Use customer feedback transparently to improve services.  
 - **Competitive Benchmarking** → Compare Safaricom vs Airtel sentiment trends.  
 
----
 
-## 🎯 Objectives  
+###  Objectives  
 - **Sentiment Classification** → Positive, Negative, Neutral  
 - **Theme & Topic Mining** → Identify major complaint categories  
 - **Trend Analysis** → Monitor issues over time  
 - **Benchmarking** → Compare Safaricom vs Airtel customer satisfaction  
 
----
 
 ## 📂 Data Understanding  
 
-### Data Source  
-- Google Play Store & Apple App Store reviews  
+**Source(s):** Google Play and Apple App Store reviews (scraped and harmonized inside the notebook).  
+**Saved dataset filename :** `kenya_telco_app_reviews_20251001_095555.csv` .  
+**Cleaned dataset summary :**
 
-**Data Includes:**  
-- Review text  
-- Star ratings  
-- Date of review  
-- App metadata  
+- **Rows:** 5,592  
+- **Columns:** 17
+- **Period covered:** Apr 14, 2025 → Sept 18, 2025  
+- **Platform breakdown:** Google Play = 5,000 reviews; App Store = 592 reviews  
+- **Apps in dataset:** Safaricom App (≈2,992 reviews), Airtel Money App (≈2,500 reviews), My Airtel (≈100 reviews)
 
-### Data Characteristics  
-- **Size:** Thousands of reviews across both platforms  
-- **Features:** Unstructured text, numeric star ratings  
-- **Target:** Sentiment classification (positive, neutral, negative)  
-
-### Data Quality Issues  
-- Duplicates and spam reviews (removed during cleaning)  
-- Mixed languages (English, Swahili, Sheng) → custom tokenization & translation  
-- Typos & informal text → normalization and lemmatization  
+**Key data notes**
+- Ratings were mapped to sentiment labels using this rule:
+  - 1–2 stars → **negative**
+  - 3 stars → **neutral**
+  - 4–5 stars → **positive**
+- `replied_at` was converted to a binary `has_reply` feature.
+- Platform-specific fields (e.g., `likes` vs `vote_sum`) were harmonized into a common schema.
+- Reviews are heavily skewed positive: ≈70% 5★; ~12% 1★; ~3.5% 2★.
 
 ### Exploratory Insights  
 - **Polarity:** Safaricom reviews show strong polarity (many highly positive, many highly negative).  
@@ -94,30 +101,51 @@ This project provides immediate, tangible value by translating noisy, unstructur
 
 ---
 
-## 📁 Repository Navigation  
+## 📂 Feature engineering & pipeline
 
+The notebook implements a reproducible NLP pipeline with the following highlights:
 
----
+1. **Cleaning & normalization**
+   - Lowercasing, removing punctuation, URL / emoji handling, contraction expansion, and optional minimal language normalization.
+   - `has_reply` (binary), `year_month` (time bucket) and review length were created as meta-features.
 
-## 📂 Project Workflow  
-1. **Data Collection** → Scraping reviews from Google Play & App Store  
-2. **Preprocessing** → Cleaning, tokenization, lemmatization  
-3. **Exploratory Data Analysis (EDA)** → Word clouds, sentiment trends  
-4. **Modeling**  
-   - Baseline ML (Logistic Regression, Naive Bayes, SVM using TF-IDF)  
-   - Transformer models (BERT & variants)  
-5. **Evaluation** → Accuracy, Precision, Recall, F1 (focus on **Negative Recall**)  
-6. **Visualization & Insights** → Complaint categories, dashboards  
+2. **Tokenization & Vectorization**
+   - TF‑IDF vectorization (from `sklearn.feature_extraction.text.TfidfVectorizer`) on cleaned review text.
+   - Stopword removal, tokenization, and basic n‑gram support were used (see notebook STEP 9).
 
----
-
-## 🛠️ Tech Stack  
-- **Languages:** Python  
-- **Libraries:** Pandas, NumPy, Scikit-learn, NLTK, SpaCy, Matplotlib, Seaborn, WordCloud, HuggingFace Transformers  
-- **Data Sources:** Google Play Store, Apple App Store  
+3. **Class imbalance handling**
+   - `class_weight="balanced"` for linear models.
+   - SMOTE oversampling tested for Naive Bayes experiments.  
 
 ---
 
+## 🛠️ Modeling & evaluation
+
+Multiple classical models were trained and evaluated (metrics quoted come directly from the notebook experiments). Important evaluation notes: the notebook contains both multi-class and binary analysis flows; because the business goal is to surface complaints, **Negative Recall** (recall for the `negative` class) was emphasized for model selection.
+
+### 🚀 API Deployment (FastAPI on Render)
+
+Our *Logistic Regression (with SMOTE) Sentiment Classifier* is live on Render.  
+This API allows anyone to test sentiment predictions on telco customer reviews.
+
+### 🌐 Live URL
+- *Base URL*: [https://customer-sentiments-analysis.onrender.com](https://customer-sentiments-analysis.onrender.com)  
+- *Docs (Swagger UI)*: [https://customer-sentiments-analysis.onrender.com/docs](https://customer-sentiments-analysis.onrender.com/docs)
+
+### 🔑 Endpoints
+- / → Welcome message  
+- /docs → Interactive Swagger UI  
+- /predict → Accepts a JSON review text and returns predicted sentiment
+
+### 📝 Example Request
+```json
+POST /predict
+{
+  "text": "Safaricom data is too slow"
+}
+```
+
+---
 ## 📊 Exploratory Data Analysis (EDA)  
 
 ### Word Clouds  
@@ -138,9 +166,46 @@ This project provides immediate, tangible value by translating noisy, unstructur
 - Negative sentiment spikes during major outages or service interruptions.  
 
 ![alt text](image-3.png)
+
 ---
 
 ## 📈 Model Performance  
+
+
+**Binary / multiclass:**
+```
+Accuracy: 0.8551
+Class breakdown (sample from the notebook):
+- negative: precision 0.72, recall 0.44, f1 0.55 (support 171)
+- neutral: precision 0.00, recall 0.00, f1 0.00 (support 52)
+- positive: precision 0.87, recall 0.99, f1 0.92 (support 881)
+```
+> Note: the zero scores for `neutral` indicate very low support for that class in the particular evaluation split.
+
+**Overall Model Comparison (notebook summary — classical models)**
+
+| Model                   | Accuracy | Macro F1 | Negative Recall | Negative Precision |
+|------------------------:|:--------:|:--------:|:---------------:|:------------------:|
+| Logistic Regression     | 85.5%    | 0.49     | 0.44            | 0.64               |
+| MNB (Baseline)          | 85.1%    | 0.48     | 0.42            | 0.75               |
+| MNB + SMOTE             | 82.6%    | **0.53** | **0.73**        | 0.51               |
+| LinearSVC (Balanced)    | 83.2%    | **0.53** | 0.57            | **0.65**           |
+| LinearSVC (Tuned)       | 80.3%    | 0.34     | 0.27            | 0.20               |
+| Random Forest (CW)      | 81.0%    | 0.30     | 0.00            | 0.00               |
+
+**Final model performance snapshot (top 3 models on the balanced/oversampled comparison):**
+
+| Model (final shortlist) | Accuracy | Macro F1 | Negative Recall |
+|------------------------:|:--------:|:--------:|:---------------:|
+| SVC (Tuned)             | 0.5562   | 0.3116   | 0.2166          |
+| MNB (SMOTE)             | 0.6250   | 0.3407   | 0.2166          |
+| LR (Weighted)           | 0.5652   | 0.3223   | **0.2535**      |
+
+**Interpretation**
+- Depending on the evaluation setup, MNB + SMOTE can achieve higher negative recall (at the cost of precision and lower overall accuracy in some runs).  
+- The final recommended model in the notebook is **Logistic Regression (class-weighted)** because it best matches the business priority of **not missing complaints** while being stable and interpretable. In the notebook’s final summary it shows the highest Negative Recall (≈0.2535) among the shortlisted models for the balanced/oversampled comparison.
+
+---
 
 ### 🔹 Baseline Models (Traditional ML)  
 
@@ -171,7 +236,7 @@ This project provides immediate, tangible value by translating noisy, unstructur
 
 ---
 
-## 📊 Visual Results  
+### 📊 Visual Results  
 
 ### Confusion Matrices  
 - **Baseline LR:** Correctly classifies positives, but misses most negatives.  
@@ -208,7 +273,26 @@ This project provides immediate, tangible value by translating noisy, unstructur
 ---
 
 ## ⚙️ Setup Instructions  
+**Recommended environment**
+- Python 3.9+ (3.10 recommended)  
+- 8+ GB RAM for model experiments (less will work for smaller samples)
 
+**Core packages (representative)**
+```
+pandas
+numpy
+scikit-learn
+imbalanced-learn
+nltk
+google-play-scraper
+xgboost
+matplotlib
+seaborn
+wordcloud
+emoji
+contractions
+```
+**Quick start**
 ```bash
 # Clone the repository
 git clone https://github.com/your-username/safaricom-airtel-analysis.git
@@ -223,3 +307,30 @@ pip install -r requirements.txt
 
 # Launch notebook
 jupyter notebook safaricom_airtel_analysis.ipynb
+```
+
+**Reproducibility tips**
+- Run cells in order; restart the kernel and run-all if you change package versions.
+- If re-scraping, be mindful of rate limits and store a local copy (`data/`) so you don’t need to re-scrape frequently.
+
+---
+
+## Next steps & limitations
+
+**Immediate next steps**
+- Improve text preprocessing (language detection → multilingual support).
+- Experiment with transformer-based embeddings (e.g., multilingual BERT) and a simple fine-tune for better recall/precision balance.
+- Build a small API (FastAPI/Flask) to serve predictions and a dashboard to visualize complaint trends.
+
+**Limitations**
+- Positivity bias and class imbalance in app reviews reduce the model’s ability to identify rare complaint patterns.
+- Potential for noisy or AI-generated reviews to bias results — consider adding spam/bot detection.
+- The notebook’s evaluation uses historical snapshots; retraining and monitoring for concept drift is required in production.
+
+---
+
+## Acknowledgements
+- Project and dataset harmonization, scraping, and modeling implemented in `safaricom_airtel_analysis.ipynb`.
+- More example visualizations and dashboards referenced inside the notebook.
+
+---
