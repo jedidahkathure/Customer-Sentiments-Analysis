@@ -1,9 +1,9 @@
 <!-- 🖼️ Placeholder for Top Banner -->
 <p align="center">
-  <img src="EDAviz/banner.png" alt="Customer Sentiment Analysis Banner" width="90%">
+  <img src="EDAviz/safcombanner.png" alt="Customer Sentiment Analysis Banner" width="90%">
 </p>
 
-<h1 align="center">📱 Customer Sentiment Analysis for Safaricom & Airtel Apps (Kenya)</h1>
+<h1 align="center">📱 Analysis for Safaricom & Airtel Apps (Kenya)</h1>
 <p align="center">
   <strong>Turning real customer feedback into actionable business intelligence through NLP & Machine Learning</strong>
 </p>
@@ -217,6 +217,17 @@ However, **Logistic Regression (SMOTE)** was selected for production:
 lightweight, explainable, and ideal for real-time sentiment tracking.
 
 ---
+
+## 🧩 **ROC Curves — Binary Classification (Positive vs Negative)**
+
+![ROC Curves - Binary](Output/ROC_all_models_binary_blues.png)
+
+The **Receiver Operating Characteristic (ROC) curve** visualizes how well each model distinguishes between **positive** and **negative** sentiments.
+
+### 🔍 **Interpretation**
+- Each line represents a model’s trade-off between **True Positive Rate (Recall)** and **False Positive Rate**.
+- The **closer the curve hugs the top-left corner**, the stronger the model’s ability to correctly identify sentiment.
+- The **Area Under the Curve (AUC)** quantifies this — higher AUC means better discrimination between positive and negative reviews.
 
 ### 🎯 Multiclass Classification
 <p align="center">
