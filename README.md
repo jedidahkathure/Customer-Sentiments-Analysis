@@ -1,6 +1,6 @@
 <!-- 🖼️ Placeholder for Top Banner -->
 <p align="center">
-  <img src="EDAviz/safcombanner.png" alt="Customer Sentiment Analysis Banner" width="90%">
+  <img src="EDAviz/banner.png" alt="Customer Sentiment Analysis Banner" width="90%">
 </p>
 
 <h1 align="center">📱 Analysis for Safaricom & Airtel Apps (Kenya)</h1>
