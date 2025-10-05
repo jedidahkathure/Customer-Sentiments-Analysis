@@ -1,225 +1,380 @@
-# Customer Sentiments For Safaricom and Airtel Analysis 📱  
-**Kenya Telco App Reviews – Capstone Project**  
+<!-- 🖼️ Placeholder for Top Banner -->
+<p align="center">
+  <img src="Output/banner_placeholder.png" alt="Customer Sentiment Analysis Banner" width="90%">
+</p>
 
-**Authors:** Jedidah Kathure, Winnie Amoit, Antony Njoroge, Rachel Odhiambo, Anne Mumbe, Navros Kamau  
-![alt text](image.png)
----
-
-## 📌 Overview  
-Customer Sentiment & Complaint Analysis from Google Play and App Store Reviews  
-
-Telecommunication giants **Safaricom** and **Airtel** serve millions of Kenyans through their mobile apps, powering critical services such as M-Pesa, Airtel Money, airtime purchases, data bundles, and customer self-service. Yet, user experiences vary widely, and customers are quick to voice their experiences in app-store reviews.  
-
-This project analyzes thousands of Safaricom and Airtel reviews using **Natural Language Processing (NLP)** to:  
-- Classify sentiment (**positive, neutral, negative**)  
-- Detect common complaints (network reliability, login/OTP issues, mobile money performance, etc.)  
-- Provide **data-driven recommendations** for product managers and CX teams  
+<h1 align="center">📱 Customer Sentiment Analysis for Safaricom & Airtel Apps (Kenya)</h1>
+<p align="center">
+  <strong>Turning real customer feedback into actionable business intelligence through NLP & Machine Learning</strong>
+</p>
 
 ---
 
-## 📌 Business Understanding  
-Kenya’s telecom giants Safaricom and Airtel serve millions who rely on their apps for mobile money, airtime, data bundles, and customer self-service.  
-
-App-store reviews provide authentic, unfiltered customer feedback on issues such as:  
-- Network reliability  
-- Data bundles  
-- M-Pesa / Airtel Money  
-- Login & OTP problems  
-- App usability  
-
-By applying NLP techniques, we can uncover patterns, detect problems, and deliver actionable insights to enhance customer experience.  
-
-**Impact:**  
-- ✅ Detect outages & major complaints in near real-time  
-- ✅ Support product/feature decisions  
-- ✅ Reduce churn through better CX  
-- ✅ Strengthen brand loyalty  
+## 👥 **Team Group Five**
+**Members:** Jedidah Kathure | Winnie Amoit | Antony Njoroge | Anne Mumbe | Navros Kamau | Rachel Odhiambo  
+🎓 *Moringa School – Data Science Capstone Project (2025)*  
 
 ---
 
-## 👥 Stakeholders  
-- **Executives / Business Leaders** → Align product strategy with customer needs.  
-- **Product Managers** → Prioritize features and bug fixes based on real user feedback.  
-- **Customer Experience (CX) Teams** → Detect pain points early and improve retention.  
-- **Marketing Teams** → Monitor brand perception and sentiment shifts.  
-- **Data Science & Engineering Teams** → Build scalable monitoring and analytics pipelines.  
-- **Regulators & Industry Analysts** → Understand telco market competitiveness.  
+## 🧭 **Executive Summary**
+
+This project leverages **Natural Language Processing (NLP)** and **Machine Learning (ML)** to analyze thousands of reviews from the **Google Play Store** and **Apple App Store** for Kenya’s leading telecom apps: **Safaricom (M-PESA, MySafaricom)** and **Airtel (Airtel Money, MyAirtel)**.  
+
+We aimed to understand how customers *feel* about these apps — identifying pain points, satisfaction drivers, and opportunities for improvement.  
+
+The end result?  
+An intelligent system capable of classifying reviews as **Positive**, **Neutral**, or **Negative** in real time, helping telcos **track sentiment, detect complaints early, and improve customer experience.**
+
+> “Every review tells a story — we turned those stories into business insights.” 💬
 
 ---
 
-## 💡 Business Value  
-This project provides immediate, tangible value by translating noisy, unstructured app reviews into **actionable intelligence**:  
+## 🚀 **Introduction / Elevator Pitch**
 
-- **Customer Retention** → Reduce churn by addressing common pain points. Detect complaints rapidly and engage dissatisfied customers before they defect.  
-- **Operational Efficiency** → Detect service outages or app issues in near real-time. Spikes in negative sentiment serve as an early warning system.  
-- **Strategic Decision-Making** → Insights for bundles, pricing, and service design.  
-- **Brand Loyalty & Trust** → Use customer feedback transparently to improve services.  
-- **Competitive Benchmarking** → Compare Safaricom vs Airtel sentiment trends.  
+In Kenya’s competitive telecom space, where digital financial apps handle millions of transactions daily, *customer experience defines brand loyalty.*  
+Safaricom and Airtel users frequently share feedback online — yet, most of these insights remain **unstructured and unread.**
 
----
-
-## 🎯 Objectives  
-- **Sentiment Classification** → Positive, Negative, Neutral  
-- **Theme & Topic Mining** → Identify major complaint categories  
-- **Trend Analysis** → Monitor issues over time  
-- **Benchmarking** → Compare Safaricom vs Airtel customer satisfaction  
+Our solution bridges that gap.  
+We built a robust sentiment analysis pipeline capable of analyzing thousands of app reviews, visualizing trends, and predicting customer mood using cutting-edge NLP models.
 
 ---
 
-## 📂 Data Understanding  
+## 💼 **Business Understanding**
 
-### Data Source  
-- Google Play Store & Apple App Store reviews  
-
-**Data Includes:**  
-- Review text  
-- Star ratings  
-- Date of review  
-- App metadata  
-
-### Data Characteristics  
-- **Size:** Thousands of reviews across both platforms  
-- **Features:** Unstructured text, numeric star ratings  
-- **Target:** Sentiment classification (positive, neutral, negative)  
-
-### Data Quality Issues  
-- Duplicates and spam reviews (removed during cleaning)  
-- Mixed languages (English, Swahili, Sheng) → custom tokenization & translation  
-- Typos & informal text → normalization and lemmatization  
-
-### Exploratory Insights  
-- **Polarity:** Safaricom reviews show strong polarity (many highly positive, many highly negative).  
-- **Airtel Focus:** Frequent login/OTP issues and customer service frustrations.  
-- **Common Keywords:** “network”, “data”, “M-Pesa”, “login”, “OTP”.  
+| Focus Area | Description |
+|-------------|-------------|
+| **Industry Context** | Telecom competition in Kenya is fierce; retaining satisfied users is more profitable than acquiring new ones. |
+| **Pain Point** | App users face performance issues, failed logins, delayed SMS/OTP, and transaction errors. |
+| **Opportunity** | Sentiment analysis provides early warnings and quantifiable feedback loops for product and customer-care teams. |
 
 ---
 
-## 📁 Repository Navigation  
+## 👥 **Stakeholders & Business Value**
 
+### 🔹 **Stakeholders**
+- **Product Teams** – monitor new feature impact and bug frequency  
+- **Customer Experience (CX) Units** – detect and address dissatisfaction early  
+- **Marketing Managers** – gauge brand reputation across digital platforms  
+- **Executives** – use insights for strategic decisions  
+- **Data Science Teams** – maintain and refine the predictive models  
 
----
-
-## 📂 Project Workflow  
-1. **Data Collection** → Scraping reviews from Google Play & App Store  
-2. **Preprocessing** → Cleaning, tokenization, lemmatization  
-3. **Exploratory Data Analysis (EDA)** → Word clouds, sentiment trends  
-4. **Modeling**  
-   - Baseline ML (Logistic Regression, Naive Bayes, SVM using TF-IDF)  
-   - Transformer models (BERT & variants)  
-5. **Evaluation** → Accuracy, Precision, Recall, F1 (focus on **Negative Recall**)  
-6. **Visualization & Insights** → Complaint categories, dashboards  
-
----
-
-## 🛠️ Tech Stack  
-- **Languages:** Python  
-- **Libraries:** Pandas, NumPy, Scikit-learn, NLTK, SpaCy, Matplotlib, Seaborn, WordCloud, HuggingFace Transformers  
-- **Data Sources:** Google Play Store, Apple App Store  
+### 💡 **Business Value**
+| Value | Description |
+|--------|--------------|
+| **Customer Insights** | Quantify satisfaction vs frustration to guide product decisions. |
+| **Faster Response** | Detect negative reviews in real time and act before escalation. |
+| **Retention & Loyalty** | Prevent churn through early issue resolution. |
+| **Data-Driven Strategy** | Empower teams with factual evidence for updates, pricing, and UX. |
 
 ---
 
-## 📊 Exploratory Data Analysis (EDA)  
+## 🎯 **Goals & Objectives**
 
-### Word Clouds  
-- **Safaricom Negative Reviews:** Dominated by *M-Pesa, data, network*.  
-
-![alt text](image.png)
-
-- **Airtel Negative Reviews:** Frequent *login, OTP, code* issues. 
-
-![alt text](image-1.png)
-
-### Sentiment Distribution  
-
-![alt text](image-2.png)
-- ~80% Positive, 15% Negative, 5% Neutral → heavy class imbalance.  
-
-### Trends Over Time  
-- Negative sentiment spikes during major outages or service interruptions.  
-
-![alt text](image-3.png)
----
-
-## 📈 Model Performance  
-
-### 🔹 Baseline Models (Traditional ML)  
-
-| Model                       | Accuracy | Macro F1 | Negative Recall (Complaint Detection) |
-|------------------------------|----------|----------|---------------------------------------|
-| Logistic Regression (Baseline) | 0.86     | 0.49     | Low (biased toward Positive)           |
-| Naive Bayes (Baseline)         | 0.82     | 0.42     | Low (biased toward Positive)           |
-| **LR (Class Weighted) – FINAL**| 0.61     | 0.32     | **0.72 (Best Score) ✅**               |
-| SVM (LinearSVC)                | 0.85     | 0.47     | Low (biased toward Positive)           |
-
-**Interpretation:**  
-- Baseline models had high accuracy but failed to detect complaints (low Negative Recall).  
-- The **Class Weighted LR model** improved Negative Recall dramatically, making it the best choice for **V1 deployment**.  
+1. Collect and preprocess app review data from both platforms.  
+2. Perform Exploratory Data Analysis (EDA) to visualize user sentiment.  
+3. Build and compare **binary** (positive vs negative) and **multiclass** (positive, neutral, negative) models.  
+4. Evaluate performance using precision, recall, F1-score, and ROC-AUC.  
+5. Deploy the best model for real-time sentiment prediction via **FastAPI**.  
+6. Provide actionable insights and recommendations to telecom stakeholders.  
 
 ---
 
-### 🔹 Deep Learning (BERT-based)  
+## 📊 **About the Dataset**
 
-| Metric      | Value |
-|-------------|-------|
-| Accuracy    | 0.92  |
-| Macro F1    | 0.78  |
-| Weighted F1 | 0.91  |
+| Attribute | Description |
+|------------|--------------|
+| **Source** | Google Play Store & Apple App Store |
+| **Apps Covered** | Safaricom: M-PESA, MySafaricom  •  Airtel: Airtel Money, MyAirtel |
+| **Size** | ~5,000 reviews |
+| **Columns** | `date`, `app_name`, `platform`, `rating`, `review`, `sentiment` |
+| **Engineered Features** | `clean_text`, `review_length`, `word_count`, `polarity_score`, `subjectivity_score` |
 
-✅ **Improvement over ML baselines:**  
-- BERT outperformed traditional models, handling nuanced neutral reviews better and balancing classification across all classes.  
-- Sets the benchmark for **V2 deployment** (once resources allow).  
-
----
-
-## 📊 Visual Results  
-
-### Confusion Matrices  
-- **Baseline LR:** Correctly classifies positives, but misses most negatives.  
-
-- **BERT:** Balanced classification across all sentiment classes.  
-
-### Classification Report  
-- Highlights **Negative Recall** as the key metric justifying **Class Weighted LR** for V1.  
-
-![alt text](image-4.png)
+**Languages:** English, Swahili, and Sheng  
+**Date Range:** 2023-2025  
 
 ---
 
-## 📊 Key Insights  
-- Positive reviews dominate both Safaricom & Airtel apps.  
-- Neutral reviews were the hardest to classify → BERT improved detection significantly.  
-- Safaricom complaints center on **M-Pesa reliability**, Airtel complaints on **login & OTP issues**.  
+## 🧩 **Data Preparation Steps**
+
+1. **Data Collection** – using App Store and Play Store scraping scripts.  
+2. **Text Cleaning** – removal of punctuation, emojis, URLs, and noise.  
+3. **Tokenization & Lemmatization** – text normalized for NLP.  
+4. **Feature Engineering** – polarity, subjectivity, and length metrics added.  
+5. **Class Balancing** – applied SMOTE for minority (negative) class.  
+6. **Split Data** – 80% train / 20% test.  
 
 ---
 
-## 🤖 Final Model Selection  
+## ⚠️ **Dataset Limitations**
 
-### Decision:  
-**Logistic Regression (Class Weighted)** → Selected for **V1 Deployment**.  
+- More data from Google Play than App Store → mild platform bias.  
+- Multilingual reviews (Swahili/English mix) → occasional misclassification.  
+- Very short reviews like “Good” or “Bad” → limited context.  
+- No demographic or regional attributes.  
 
-**Why LR (Weighted):**  
-- **High Complaint Detection:** Negative Recall = **0.72**  
-- **Resource Efficient:** Lightweight, fast, easy to maintain in production  
-- **Immediate Business Value:** Meets the primary goal of detecting complaints  
-
-### Future Target:  
-**BERT (Transformer Model)** → Reserved for **V2 Deployment** when infrastructure can support it.  
+Despite these constraints, preprocessing ensured **clean, balanced, and high-quality text data.**
 
 ---
 
-## ⚙️ Setup Instructions  
+## 🛠️ **Tools & Tech Stack**
 
+| Category | Tools |
+|-----------|--------|
+| **Programming** | Python 3.12 |
+| **Libraries** | Pandas, NumPy, Scikit-learn, NLTK, SpaCy, WordCloud, Matplotlib, Seaborn |
+| **Modeling** | Logistic Regression, SVM, Naive Bayes, Decision Tree, Random Forest, XGBoost, BERT |
+| **Deployment** | FastAPI, Render |
+| **Version Control** | Git & GitHub |
+| **Documentation** | Markdown, Jupyter Notebook, PowerPoint |
+
+---
+
+## 🧠 **Story Behind the Project**
+
+Originally, the team intended to scrape **Twitter data** for public telecom sentiment.  
+However, due to **Twitter API restrictions**, we pivoted to analyzing **App Store reviews**, which offered:  
+- App-specific, structured, and richer feedback  
+- Continuous review availability  
+- Real-world relevance to product teams  
+
+This pivot not only improved data quality but also aligned perfectly with **business use cases.**
+
+---
+
+## 🧮 **Analysis & Methodology**
+
+| Phase | Key Action |
+|--------|-------------|
+| **Data Cleaning** | Removed noise and standardized text. |
+| **Exploratory Data Analysis** | Visualized sentiment trends, word frequencies, and app ratings. |
+| **Feature Engineering** | Created custom text-based features. |
+| **Model Building** | Compared multiple ML algorithms for binary & multiclass problems. |
+| **Evaluation** | Used metrics & plots to assess predictive power. |
+| **Deployment** | Exposed Logistic Regression (SMOTE) model via FastAPI API. |
+
+---
+
+## 📊 **Exploratory Data Analysis**
+
+### 🧭 Sentiment Overview
+![Sentiment Distribution](EDAviz/02_sentiment_distribution_dashboard.png)
+*Sentiment distribution across all app reviews.*
+
+### ☁️ Word Clouds
+<p align="center">
+  <img src="Output/wordcloud_positive_blues.png" width="45%">
+  <img src="Output/wordcloud_negative_blues.png" width="45%">
+</p>
+
+**Positive keywords:** “easy”, “fast”, “reliable”  
+**Negative keywords:** “failed”, “slow”, “OTP”, “error”
+
+### ⭐ Ratings Dashboard
+![Ratings Dashboard](Output/01_ratings_dashboard.png)
+*Positive ratings dominate, but spikes in low ratings reveal key usability issues.*
+
+---
+
+## 🤖 **Modeling Approach**
+
+### 🔹 Binary Classification
+Classified reviews into **Positive (1)** and **Negative (0)** for quick complaint detection.  
+
+### 🔹 Multiclass Classification
+Extended classification into **Positive**, **Neutral**, and **Negative** — providing a full picture of customer sentiment.  
+
+### 🔹 Algorithms Compared
+- Logistic Regression (baseline & with SMOTE)  
+- Support Vector Machine (SVM)  
+- Naive Bayes  
+- Decision Tree  
+- Random Forest  
+- XGBoost  
+- DistilBERT Transformer  
+
+---
+
+## ⚙️ **Model Evaluation**
+
+### 🧾 Binary Model Metrics
+![Binary Metrics](Output/binary_metrics_grid_blues.png)
+
+| Model | Strength |
+|--------|-----------|
+| **XGBoost** | Strongest overall performance |
+| **SVM / Decision Tree** | Better for complaint detection |
+| **Naive Bayes** | Fastest training time |
+| **Logistic Regression (SMOTE)** | Balanced, interpretable, and chosen for deployment ✅ |
+
+---
+
+### 📉 Confusion Matrices
+![Confusion Matrices](Output/CM_grid_all_models_binary_blues.png)
+*Dark squares = correct predictions. All models classify positives well, negatives remain challenging.*
+
+---
+
+### 🤖 SMOTE vs BERT
+![SMOTE vs BERT](Output/binary_metrics_grid_SMOTE_vs_BERT.png)
+
+**DistilBERT** achieved >92% accuracy — strongest overall.  
+However, **Logistic Regression (SMOTE)** was selected for production:  
+lightweight, explainable, and ideal for real-time sentiment tracking.
+
+---
+
+### 🎯 Multiclass Classification
+<p align="center">
+  <img src="Output/multiclass_model_comparison.png" width="90%">
+</p>
+
+### 🔥 Multiclass Performance Heatmaps
+<p align="center">
+  <img src="Output/multiclass_performance_heatmap.png" width="45%">
+  <img src="Output/final_model_heatmap.png" width="45%">
+</p>
+
+*All models achieved >85% accuracy. DistilBERT excelled at capturing neutral nuance.*
+
+---
+
+## 📈 **Evaluation Metrics Explained**
+
+| Metric | Meaning | Why It Matters |
+|---------|----------|----------------|
+| **Precision** | % of correct positive predictions | Prevents false praise of negative reviews |
+| **Recall** | % of actual positives caught | Ensures complaints aren’t missed |
+| **F1-Score** | Balance of precision & recall | Evaluates real-world reliability |
+| **ROC-AUC** | Measures discrimination power | Higher = better model differentiation |
+
+---
+
+## 🧩 **Model Selection Summary**
+
+| Model | Type | Accuracy | Comment |
+|--------|------|-----------|----------|
+| Logistic Regression (SMOTE) | ML | 88% | Lightweight, interpretable ✅ |
+| XGBoost | ML | 89% | Excellent overall but heavier |
+| DistilBERT | Transformer | 92% | Best accuracy, slower inference |
+| Naive Bayes | ML | 82% | Fast but less accurate |
+
+---
+
+## 🚀 **Deployment**
+
+**Framework:** FastAPI  
+**Hosting:** Render  
+**Model:** Logistic Regression with SMOTE  
+
+### 🌐 Live URL
+- *Base URL:* [https://customer-sentiments-analysis.onrender.com](https://customer-sentiments-analysis.onrender.com)  
+- *Docs (Swagger UI):* [https://customer-sentiments-analysis.onrender.com/docs](https://customer-sentiments-analysis.onrender.com/docs)
+
+**Features:**
+- Real-time text sentiment prediction  
+- REST API endpoints for integration  
+- Interactive Swagger UI documentation  
+- Scalable and lightweight  
+
+---
+
+## 💡 **Key Insights**
+
+| Category | Takeaway |
+|-----------|-----------|
+| **Data** | Majority reviews are positive — strong brand equity |
+| **Negative Trends** | Complaints about speed, failed logins, network outages |
+| **Neutral Feedback** | Represents “almost happy” users — easy to convert |
+| **Model Performance** | All >85% accuracy; Logistic Regression (SMOTE) ideal for deployment |
+| **Business Impact** | Enables proactive issue detection and improved customer experience |
+
+---
+
+## 💼 **Business Impact & Next Steps**
+
+### 🧭 **Business Impact**
+- Early detection of customer dissatisfaction  
+- Support for CX and marketing decisions  
+- Measurable reduction in response time to issues  
+- Data-driven prioritization for app updates  
+
+### 🚀 **Next Steps**
+- Add multilingual (Swahili/Sheng) transformer models  
+- Automate live dashboards using Streamlit/Power BI  
+- Implement continuous model retraining  
+- Integrate with CRM systems for automated alerts  
+
+---
+
+## 🏗️ **Repository Structure**
+
+Customer-Sentiments-Analysis/
+│
+├── Data/ # Raw & cleaned datasets
+├── EDAviz/ # EDA dashboards
+├── Output/ # Visuals & model outputs
+│ ├── CM_grid_all_models_binary_blues.png
+│ ├── binary_metrics_grid_blues.png
+│ ├── multiclass_model_comparison.png
+│ ├── final_model_heatmap.png
+│ └── binary_metrics_grid_SMOTE_vs_BERT.png
+│
+├── safaricom_airtel_analysis.ipynb # Main analysis notebook
+├── presentation.pdf # Stakeholder presentation
+├── requirements.txt # Dependencies
+└── README.md # Project Documentation
+
+
+---
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/safaricom-airtel-analysis.git
-cd safaricom-airtel-analysis
+## 💻 **How to Clone & Run Locally**
 
-# Create and activate venv
-python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
 
-# Install dependencies
+# 1️⃣ Clone the repository
+git clone https://github.com/jedidahkathure/Customer-Sentiments-Analysis.git
+
+# 2️⃣ Navigate into the project
+cd Customer-Sentiments-Analysis
+
+# 3️⃣ Install dependencies
 pip install -r requirements.txt
 
-# Launch notebook
+# 4️⃣ Launch the Jupyter Notebook
 jupyter notebook safaricom_airtel_analysis.ipynb
+
+```
+
+## 🧠 **Lessons Learned**
+
+- 🧹 **Clean & Balanced Data Matters:** Ensuring text is properly preprocessed and balanced greatly improves NLP model accuracy.  
+- 💬 **Model Explainability is Crucial:** Logistic Regression proved valuable not just for performance, but for its interpretability in business settings.  
+- 🔄 **Adaptability in Real-World Data:** Pivoting from Twitter to App Store reviews highlighted the importance of flexibility in data sourcing.  
+- 🤝 **Collaboration & Version Control:** Coordinating across multiple contributors with Git and GitHub enhanced teamwork and reproducibility.  
+
+---
+
+## 🙌 **Acknowledgments**
+
+Special thanks to:  
+- 🎓 **Moringa School** – for mentorship and guidance  
+- 👩‍🏫 **Technical Mentors** – Shout out to SamG! 
+- 📱 **Safaricom & Airtel App Users** – whose voices made this analysis meaningful.  
+- 🌍 **Open-Source Community** – for providing the powerful NLP tools and libraries we used.  
+
+---
+
+## ❓ **Questions & Contributions**
+
+💬 Have feedback or suggestions?  
+Open an issue, fork this repository, or connect with us on LinkedIn to collaborate!  
+
+---
+
+## 🌟 **Support**
+
+If this project inspired or helped you:  
+⭐ **Star this repository** to show your support.  
+❤️ **Share it** with your peers and community.  
+🧠 **Follow us** for more impactful, data-driven projects.  
+
+---
