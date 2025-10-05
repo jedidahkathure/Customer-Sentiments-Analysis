@@ -1,18 +1,16 @@
 <!-- 🖼️ Placeholder for Top Banner -->
 <p align="center">
-  <img src="Output/banner_placeholder.png" alt="Customer Sentiment Analysis Banner" width="90%">
+  <img src="EDAviz/safcombanner.png" alt="Customer Sentiment Analysis Banner" width="90%">
 </p>
 
-<h1 align="center">📱 Customer Sentiment Analysis for Safaricom & Airtel Apps (Kenya)</h1>
+<h1 align="center">📱 Analysis for Safaricom & Airtel Apps (Kenya)</h1>
 <p align="center">
   <strong>Turning real customer feedback into actionable business intelligence through NLP & Machine Learning</strong>
 </p>
 
 ---
 
-## 👥 **Team Group Five**
-**Members:** Jedidah Kathure | Winnie Amoit | Antony Njoroge | Anne Mumbe | Navros Kamau | Rachel Odhiambo  
-🎓 *Moringa School – Data Science Capstone Project (2025)*  
+## 👥 **Authors: Jedidah Kathure | Winnie Amoit | Anthony Njoroge | Anne Mumbe | Navros Kamau | Rachel Odhiambo**
 
 ---
 
@@ -23,13 +21,13 @@ This project leverages **Natural Language Processing (NLP)** and **Machine Learn
 We aimed to understand how customers *feel* about these apps — identifying pain points, satisfaction drivers, and opportunities for improvement.  
 
 The end result?  
-An intelligent system capable of classifying reviews as **Positive**, **Neutral**, or **Negative** in real time, helping telcos **track sentiment, detect complaints early, and improve customer experience.**
+An intelligent system capable of classifying reviews as **Positive** or **Negative** in real time, helping telcos **track sentiment, detect complaints early, and improve customer experience.**
 
 > “Every review tells a story — we turned those stories into business insights.” 💬
 
 ---
 
-## 🚀 **Introduction / Elevator Pitch**
+## 🚀 **Introduction**
 
 In Kenya’s competitive telecom space, where digital financial apps handle millions of transactions daily, *customer experience defines brand loyalty.*  
 Safaricom and Airtel users frequently share feedback online — yet, most of these insights remain **unstructured and unread.**
@@ -87,7 +85,7 @@ We built a robust sentiment analysis pipeline capable of analyzing thousands of 
 | **Apps Covered** | Safaricom: M-PESA, MySafaricom  •  Airtel: Airtel Money, MyAirtel |
 | **Size** | ~5,000 reviews |
 | **Columns** | `date`, `app_name`, `platform`, `rating`, `review`, `sentiment` |
-| **Engineered Features** | `clean_text`, `review_length`, `word_count`, `polarity_score`, `subjectivity_score` |
+| **Engineered Features** | `clean_text`, `review_length`, `word_count`|
 
 **Languages:** English, Swahili, and Sheng  
 **Date Range:** 2023-2025  
@@ -161,16 +159,13 @@ This pivot not only improved data quality but also aligned perfectly with **busi
 *Sentiment distribution across all app reviews.*
 
 ### ☁️ Word Clouds
-<p align="center">
-  <img src="Output/wordcloud_positive_blues.png" width="45%">
-  <img src="Output/wordcloud_negative_blues.png" width="45%">
-</p>
+![Ratings Dashboard](Output/wordclouds_positive_negative_combined.png)
 
 **Positive keywords:** “easy”, “fast”, “reliable”  
 **Negative keywords:** “failed”, “slow”, “OTP”, “error”
 
 ### ⭐ Ratings Dashboard
-![Ratings Dashboard](Output/01_ratings_dashboard.png)
+![Ratings Dashboard](EDAviz/01_ratings_dashboard.png)
 *Positive ratings dominate, but spikes in low ratings reveal key usability issues.*
 
 ---
@@ -222,6 +217,17 @@ However, **Logistic Regression (SMOTE)** was selected for production:
 lightweight, explainable, and ideal for real-time sentiment tracking.
 
 ---
+
+## 🧩 **ROC Curves — Binary Classification (Positive vs Negative)**
+
+![ROC Curves - Binary](Output/ROC_all_models_binary_blues.png)
+
+The **Receiver Operating Characteristic (ROC) curve** visualizes how well each model distinguishes between **positive** and **negative** sentiments.
+
+### 🔍 **Interpretation**
+- Each line represents a model’s trade-off between **True Positive Rate (Recall)** and **False Positive Rate**.
+- The **closer the curve hugs the top-left corner**, the stronger the model’s ability to correctly identify sentiment.
+- The **Area Under the Curve (AUC)** quantifies this — higher AUC means better discrimination between positive and negative reviews.
 
 ### 🎯 Multiclass Classification
 <p align="center">
@@ -357,7 +363,7 @@ jupyter notebook safaricom_airtel_analysis.ipynb
 
 Special thanks to:  
 - 🎓 **Moringa School** – for mentorship and guidance  
-- 👩‍🏫 **Technical Mentors** – Shout out to SamG! 
+- 👩‍🏫 **Technical Mentors** – Shout out to our TM Samuel G. Mwangi (SamG)!
 - 📱 **Safaricom & Airtel App Users** – whose voices made this analysis meaningful.  
 - 🌍 **Open-Source Community** – for providing the powerful NLP tools and libraries we used.  
 
