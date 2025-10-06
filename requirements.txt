@@ -31,3 +31,5 @@ uvicorn
 scikit-learn
 imblearn
 joblib
+streamlit
+requests
