@@ -3,18 +3,18 @@
   <img src="EDAviz/banner.png" alt="Customer Sentiment Analysis Banner" width="90%">
 </p>
 
-<h1 align="center">📱 Analysis for Safaricom & Airtel Apps (Kenya)</h1>
+<h1 align="center"> Analysis for Safaricom & Airtel Apps (Kenya)</h1>
 <p align="center">
   <strong>Turning real customer feedback into actionable business intelligence through NLP & Machine Learning</strong>
 </p>
 
 ---
 
-## 👥 **Authors: Jedidah Kathure | Winnie Amoit | Anthony Njoroge | Anne Mumbe | Navros Kamau | Rachel Odhiambo**
+##  **Authors: Jedidah Kathure | Winnie Amoit | Anthony Njoroge | Anne Mumbe | Navros Kamau | Rachel Odhiambo**
 
 ---
 
-## 🧭 **Executive Summary**
+##  **Executive Summary**
 
 This project leverages **Natural Language Processing (NLP)** and **Machine Learning (ML)** to analyze thousands of reviews from the **Google Play Store** and **Apple App Store** for Kenya’s leading telecom apps: **Safaricom (M-PESA, MySafaricom)** and **Airtel (Airtel Money, MyAirtel)**.  
 
@@ -27,7 +27,7 @@ An intelligent system capable of classifying reviews as **Positive** or **Negati
 
 ---
 
-## 🚀 **Introduction**
+## **Introduction**
 
 In Kenya’s competitive telecom space, where digital financial apps handle millions of transactions daily, *customer experience defines brand loyalty.*  
 Safaricom and Airtel users frequently share feedback online — yet, most of these insights remain **unstructured and unread.**
@@ -37,7 +37,7 @@ We built a robust sentiment analysis pipeline capable of analyzing thousands of 
 
 ---
 
-## 💼 **Business Understanding**
+##  **Business Understanding**
 
 | Focus Area | Description |
 |-------------|-------------|
@@ -47,7 +47,7 @@ We built a robust sentiment analysis pipeline capable of analyzing thousands of 
 
 ---
 
-## 👥 **Stakeholders & Business Value**
+##  **Stakeholders & Business Value**
 
 ### 🔹 **Stakeholders**
 - **Product Teams** – monitor new feature impact and bug frequency  
@@ -56,7 +56,7 @@ We built a robust sentiment analysis pipeline capable of analyzing thousands of 
 - **Executives** – use insights for strategic decisions  
 - **Data Science Teams** – maintain and refine the predictive models  
 
-### 💡 **Business Value**
+###  **Business Value**
 | Value | Description |
 |--------|--------------|
 | **Customer Insights** | Quantify satisfaction vs frustration to guide product decisions. |
@@ -66,7 +66,7 @@ We built a robust sentiment analysis pipeline capable of analyzing thousands of 
 
 ---
 
-## 🎯 **Goals & Objectives**
+##  **Goals & Objectives**
 
 1. Collect and preprocess app review data from both platforms.  
 2. Perform Exploratory Data Analysis (EDA) to visualize user sentiment.  
@@ -92,7 +92,7 @@ We built a robust sentiment analysis pipeline capable of analyzing thousands of 
 
 ---
 
-## 🧩 **Data Preparation Steps**
+##  **Data Preparation Steps**
 
 1. **Data Collection** – using App Store and Play Store scraping scripts.  
 2. **Text Cleaning** – removal of punctuation, emojis, URLs, and noise.  
@@ -103,7 +103,7 @@ We built a robust sentiment analysis pipeline capable of analyzing thousands of 
 
 ---
 
-## ⚠️ **Dataset Limitations**
+##  **Dataset Limitations**
 
 - More data from Google Play than App Store → mild platform bias.  
 - Multilingual reviews (Swahili/English mix) → occasional misclassification.  
@@ -127,7 +127,7 @@ Despite these constraints, preprocessing ensured **clean, balanced, and high-qua
 
 ---
 
-## 🧠 **Story Behind the Project**
+##  **Story Behind the Project**
 
 Originally, the team intended to scrape **Twitter data** for public telecom sentiment.  
 However, due to **Twitter API restrictions**, we pivoted to analyzing **App Store reviews**, which offered:  
@@ -139,7 +139,7 @@ This pivot not only improved data quality but also aligned perfectly with **busi
 
 ---
 
-## 🧮 **Analysis & Methodology**
+##  **Analysis & Methodology**
 
 | Phase | Key Action |
 |--------|-------------|
@@ -154,11 +154,11 @@ This pivot not only improved data quality but also aligned perfectly with **busi
 
 ## 📊 **Exploratory Data Analysis**
 
-### 🧭 Sentiment Overview
+###  Sentiment Overview
 ![Sentiment Distribution](EDAviz/02_sentiment_distribution_dashboard.png)
 *Sentiment distribution across all app reviews.*
 
-### ☁️ Word Clouds
+###  Word Clouds
 ![Ratings Dashboard](Output/wordclouds_positive_negative_combined.png)
 
 **Positive keywords:** “easy”, “fast”, “reliable”  
@@ -170,7 +170,7 @@ This pivot not only improved data quality but also aligned perfectly with **busi
 
 ---
 
-## 🤖 **Modeling Approach**
+##  **Modeling Approach**
 
 ### 🔹 Binary Classification
 Classified reviews into **Positive (1)** and **Negative (0)** for quick complaint detection.  
@@ -191,7 +191,7 @@ Extended classification into **Positive**, **Neutral**, and **Negative** — pro
 
 ## ⚙️ **Model Evaluation**
 
-### 🧾 Binary Model Metrics
+###  Binary Model Metrics
 ![Binary Metrics](Output/binary_metrics_grid_blues.png)
 
 | Model | Strength |
@@ -209,7 +209,7 @@ Extended classification into **Positive**, **Neutral**, and **Negative** — pro
 
 ---
 
-### 🤖 SMOTE vs BERT
+###  SMOTE vs BERT
 ![SMOTE vs BERT](Output/binary_metrics_grid_SMOTE_vs_BERT.png)
 
 **DistilBERT** achieved >92% accuracy — strongest overall.  
@@ -218,23 +218,23 @@ lightweight, explainable, and ideal for real-time sentiment tracking.
 
 ---
 
-## 🧩 **ROC Curves — Binary Classification (Positive vs Negative)**
+##  **ROC Curves — Binary Classification (Positive vs Negative)**
 
 ![ROC Curves - Binary](Output/ROC_all_models_binary_blues.png)
 
 The **Receiver Operating Characteristic (ROC) curve** visualizes how well each model distinguishes between **positive** and **negative** sentiments.
 
-### 🔍 **Interpretation**
+###  **Interpretation**
 - Each line represents a model’s trade-off between **True Positive Rate (Recall)** and **False Positive Rate**.
 - The **closer the curve hugs the top-left corner**, the stronger the model’s ability to correctly identify sentiment.
 - The **Area Under the Curve (AUC)** quantifies this — higher AUC means better discrimination between positive and negative reviews.
 
-### 🎯 Multiclass Classification
+###  Multiclass Classification
 <p align="center">
   <img src="Output/multiclass_model_comparison.png" width="90%">
 </p>
 
-### 🔥 Multiclass Performance Heatmaps
+###  Multiclass Performance Heatmaps
 <p align="center">
   <img src="Output/multiclass_performance_heatmap.png" width="45%">
   <img src="Output/final_model_heatmap.png" width="45%">
@@ -244,7 +244,7 @@ The **Receiver Operating Characteristic (ROC) curve** visualizes how well each m
 
 ---
 
-## 📈 **Evaluation Metrics Explained**
+##  **Evaluation Metrics Explained**
 
 | Metric | Meaning | Why It Matters |
 |---------|----------|----------------|
@@ -255,7 +255,7 @@ The **Receiver Operating Characteristic (ROC) curve** visualizes how well each m
 
 ---
 
-## 🧩 **Model Selection Summary**
+##  **Model Selection Summary**
 
 | Model | Type | Accuracy | Comment |
 |--------|------|-----------|----------|
@@ -266,7 +266,7 @@ The **Receiver Operating Characteristic (ROC) curve** visualizes how well each m
 
 ---
 
-## 🚀 **Deployment**
+##  **Deployment**
 
 **Framework:** FastAPI  
 **Hosting:** Render  
@@ -284,7 +284,7 @@ The **Receiver Operating Characteristic (ROC) curve** visualizes how well each m
 
 ---
 
-## 💡 **Key Insights**
+##  **Key Insights**
 
 | Category | Takeaway |
 |-----------|-----------|
@@ -296,15 +296,15 @@ The **Receiver Operating Characteristic (ROC) curve** visualizes how well each m
 
 ---
 
-## 💼 **Business Impact & Next Steps**
+##  **Business Impact & Next Steps**
 
-### 🧭 **Business Impact**
+###  **Business Impact**
 - Early detection of customer dissatisfaction  
 - Support for CX and marketing decisions  
 - Measurable reduction in response time to issues  
 - Data-driven prioritization for app updates  
 
-### 🚀 **Next Steps**
+###  **Next Steps**
 - Add multilingual (Swahili/Sheng) transformer models  
 - Automate live dashboards using Streamlit/Power BI  
 - Implement continuous model retraining  
@@ -312,7 +312,7 @@ The **Receiver Operating Characteristic (ROC) curve** visualizes how well each m
 
 ---
 
-## 🏗️ **Repository Structure**
+##  **Repository Structure**
 
 Customer-Sentiments-Analysis/
 │
@@ -350,22 +350,22 @@ jupyter notebook safaricom_airtel_analysis.ipynb
 
 ```
 
-## 🧠 **Lessons Learned**
+##  **Lessons Learned**
 
-- 🧹 **Clean & Balanced Data Matters:** Ensuring text is properly preprocessed and balanced greatly improves NLP model accuracy.  
-- 💬 **Model Explainability is Crucial:** Logistic Regression proved valuable not just for performance, but for its interpretability in business settings.  
-- 🔄 **Adaptability in Real-World Data:** Pivoting from Twitter to App Store reviews highlighted the importance of flexibility in data sourcing.  
-- 🤝 **Collaboration & Version Control:** Coordinating across multiple contributors with Git and GitHub enhanced teamwork and reproducibility.  
+-  **Clean & Balanced Data Matters:** Ensuring text is properly preprocessed and balanced greatly improves NLP model accuracy.  
+-  **Model Explainability is Crucial:** Logistic Regression proved valuable not just for performance, but for its interpretability in business settings.  
+-  **Adaptability in Real-World Data:** Pivoting from Twitter to App Store reviews highlighted the importance of flexibility in data sourcing.  
+-  **Collaboration & Version Control:** Coordinating across multiple contributors with Git and GitHub enhanced teamwork and reproducibility.  
 
 ---
 
-## 🙌 **Acknowledgments**
+##  **Acknowledgments**
 
 Special thanks to:  
-- 🎓 **Moringa School** – for mentorship and guidance  
-- 👩‍🏫 **Technical Mentors** – Shout out to our TM Samuel G. Mwangi (SamG)!
-- 📱 **Safaricom & Airtel App Users** – whose voices made this analysis meaningful.  
-- 🌍 **Open-Source Community** – for providing the powerful NLP tools and libraries we used.  
+-  **Moringa School** – for mentorship and guidance  
+-  **Technical Mentors** – Shout out to our TM Samuel G. Mwangi (SamG)!
+-  **Safaricom & Airtel App Users** – whose voices made this analysis meaningful.  
+-  **Open-Source Community** – for providing the powerful NLP tools and libraries we used.  
 
 ---
 
@@ -376,7 +376,7 @@ Open an issue, fork this repository, or connect with us on LinkedIn to collabora
 
 ---
 
-## 🌟 **Support**
+##  **Support**
 
 If this project inspired or helped you:  
 ⭐ **Star this repository** to show your support.  
