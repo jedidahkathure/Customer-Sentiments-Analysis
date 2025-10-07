@@ -272,9 +272,13 @@ The **Receiver Operating Characteristic (ROC) curve** visualizes how well each m
 **Hosting:** Render  
 **Model:** Logistic Regression with SMOTE  
 
-### 🌐 Live URL
-- *Base URL:* [https://customer-sentiments-analysis.onrender.com](https://customer-sentiments-analysis.onrender.com)  
-- *Docs (Swagger UI):* [https://customer-sentiments-analysis.onrender.com/docs](https://customer-sentiments-analysis.onrender.com/docs)
+### 🌐 Live URLs
+
+Streamlit App: https://safaricomairtelsentiment.streamlit.app
+
+Base API URL: https://customer-sentiments-analysis.onrender.com
+
+API Docs (Swagger UI): https://customer-sentiments-analysis.onrender.com/docs
 
 **Features:**
 - Real-time text sentiment prediction  
